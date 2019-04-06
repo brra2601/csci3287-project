@@ -1,12 +1,12 @@
-package com.brajkowski.webapp;
+package com.brajkowski.leaderboard;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class WebAppApplication {
+public class Application {
 	public static void main(String[] args) {
-		SpringApplication.run(WebAppApplication.class, args);
+		SpringApplication.run(Application.class, args);
 	}
 
 }
