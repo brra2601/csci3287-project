@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @RequestMapping(path = "/relationship")
-public class RelationshipController {
+public class RelationshipApi {
     @Autowired
     private RelationshipRepository relationshipRepository;
 
