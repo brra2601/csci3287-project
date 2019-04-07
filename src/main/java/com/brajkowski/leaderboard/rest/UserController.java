@@ -1,4 +1,4 @@
-package com.brajkowski.leaderboard.api;
+package com.brajkowski.leaderboard.rest;
 
 import com.brajkowski.leaderboard.dao.UserRepository;
 import com.brajkowski.leaderboard.domain.User;
