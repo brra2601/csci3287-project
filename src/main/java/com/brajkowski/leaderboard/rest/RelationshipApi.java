@@ -1,9 +1,5 @@
 package com.brajkowski.leaderboard.rest;
 
-import java.util.List;
-
-import javax.xml.ws.Response;
-
 import com.brajkowski.leaderboard.dao.RelationshipDao;
 import com.brajkowski.leaderboard.domain.DaoCreationResult;
 import com.brajkowski.leaderboard.domain.Relationship;

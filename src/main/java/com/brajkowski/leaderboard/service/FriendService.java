@@ -6,8 +6,6 @@ import java.util.List;
 import com.brajkowski.leaderboard.dao.RelationshipDao;
 import com.brajkowski.leaderboard.domain.Relationship;
 import com.brajkowski.leaderboard.domain.RelationshipStatus;
-import com.brajkowski.leaderboard.domain.User;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

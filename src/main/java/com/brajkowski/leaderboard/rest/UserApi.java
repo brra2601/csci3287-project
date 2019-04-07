@@ -23,7 +23,7 @@ public class UserApi {
         return ResponseEntity.ok(users.getAllUsers());
     }
 
-    @PostMapping
+    @PostMapping(path = "/signup")
     public ResponseEntity<Object> createNewUser(@RequestBody User user) {
         DaoCreationResult result = users.addUser(user);
         if (result.didSucceed()) {
