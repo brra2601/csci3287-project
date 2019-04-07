@@ -1,6 +1,8 @@
 package com.brajkowski.leaderboard.rest;
 
 import com.brajkowski.leaderboard.repository.RelationshipRepository;
+import com.brajkowski.leaderboard.dao.RelationshipDao;
+import com.brajkowski.leaderboard.domain.DaoCreationResult;
 import com.brajkowski.leaderboard.domain.Relationship;
 import com.brajkowski.leaderboard.domain.RelationshipIdentity;
 
@@ -16,20 +18,23 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping(path = "/relationship")
 public class RelationshipApi {
     @Autowired
-    private RelationshipRepository relationshipRepository;
+    private RelationshipDao relationships;
 
     @GetMapping
     public ResponseEntity<Iterable<Relationship>> getAll() {
-        return ResponseEntity.ok(relationshipRepository.findAll());
+        return ResponseEntity.ok(relationships.getRelationships());
     }
 
     @PostMapping
-    public ResponseEntity<Relationship> create(@RequestBody RelationshipIdentity relationshipIdentity) {
+    public ResponseEntity<Object> create(@RequestBody RelationshipIdentity relationshipIdentity) {
         Relationship relationship = new Relationship();
-        relationship.relationshipIdentity = relationshipIdentity;
+        relationship.relationshipIdentity = RelationshipIdentity.normalize(relationshipIdentity);
         relationship.action_user = relationshipIdentity.user_low;
         relationship.status = 0;
-        relationshipRepository.save(relationship);
-        return ResponseEntity.ok(relationship);
+        DaoCreationResult result = relationships.addRelationship(relationship);
+        if (result.didSucceed()) {
+            return ResponseEntity.ok(relationship);
+        }
+        return ResponseEntity.badRequest().body(result.getMessage());
     }
 }

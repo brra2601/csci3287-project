@@ -1,6 +1,8 @@
 package com.brajkowski.leaderboard.rest;
 
 import com.brajkowski.leaderboard.repository.UserRepository;
+import com.brajkowski.leaderboard.dao.UserDao;
+import com.brajkowski.leaderboard.domain.DaoCreationResult;
 import com.brajkowski.leaderboard.domain.User;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,16 +17,19 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping(path="/user")
 public class UserApi {
     @Autowired
-    private UserRepository userRepository;
+    private UserDao users;
 
     @GetMapping
     public ResponseEntity<Iterable<User>> getAllUsers() {
-        return ResponseEntity.ok(userRepository.findAll());
+        return ResponseEntity.ok(users.getAllUsers());
     }
 
     @PostMapping
-    public ResponseEntity<User> createNewUser(@RequestBody User user) {
-        userRepository.save(user);
-        return ResponseEntity.ok(user);
+    public ResponseEntity<Object> createNewUser(@RequestBody User user) {
+        DaoCreationResult result = users.addUser(user);
+        if (result.didSucceed()) {
+            return ResponseEntity.ok(user);
+        }
+        return ResponseEntity.badRequest().body(result.getMessage());
     }
 }
