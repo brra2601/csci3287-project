@@ -1,6 +1,6 @@
 package com.brajkowski.leaderboard.rest;
 
-import com.brajkowski.leaderboard.dao.RelationshipRepository;
+import com.brajkowski.leaderboard.repository.RelationshipRepository;
 import com.brajkowski.leaderboard.domain.Relationship;
 import com.brajkowski.leaderboard.domain.RelationshipIdentity;
 

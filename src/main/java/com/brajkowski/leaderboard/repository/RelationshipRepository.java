@@ -1,4 +1,4 @@
-package com.brajkowski.leaderboard.dao;
+package com.brajkowski.leaderboard.repository;
 
 import com.brajkowski.leaderboard.domain.Relationship;
 import com.brajkowski.leaderboard.domain.RelationshipIdentity;
