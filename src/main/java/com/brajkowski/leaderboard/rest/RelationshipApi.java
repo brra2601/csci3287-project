@@ -1,6 +1,5 @@
 package com.brajkowski.leaderboard.rest;
 
-import com.brajkowski.leaderboard.repository.RelationshipRepository;
 import com.brajkowski.leaderboard.dao.RelationshipDao;
 import com.brajkowski.leaderboard.domain.DaoCreationResult;
 import com.brajkowski.leaderboard.domain.Relationship;
