@@ -9,6 +9,7 @@ import com.brajkowski.leaderboard.domain.User;
 import com.brajkowski.leaderboard.repository.UserRepository;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Component;
 
 @Component
@@ -16,6 +17,9 @@ public class UserDaoImpl implements UserDao {
 
     @Autowired
     private UserRepository userRepository;
+
+    @Autowired
+    private PasswordEncoder passwordEncoder;
 
     @Override
     public List<User> getAllUsers() {
@@ -42,6 +46,8 @@ public class UserDaoImpl implements UserDao {
             String message = String.format("A user already exists with the email %s", user.email);
             return new DaoCreationResult(false, Optional.of(message));
         }
+        String encodedPassword = passwordEncoder.encode(user.password);
+        user.password = encodedPassword;
         userRepository.save(user);
         return new DaoCreationResult(true, null);
     }
