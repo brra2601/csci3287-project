@@ -1,9 +1,9 @@
 package com.brajkowski.leaderboard.service;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import com.brajkowski.leaderboard.dao.RelationshipDao;
+import com.brajkowski.leaderboard.domain.FriendList;
 import com.brajkowski.leaderboard.domain.Relationship;
 import com.brajkowski.leaderboard.domain.RelationshipStatus;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,8 +15,8 @@ public class FriendService {
     @Autowired
     private RelationshipDao relationships;
 
-    public List<String> generateFriendList(String username) {
-        ArrayList<String> friendList = new ArrayList<String>();
+    public FriendList generateFriendList(String username) {
+        FriendList friendList = new FriendList();
         List<Relationship> friends = relationships.getRelationshipsByUsernameAndStatus(username, RelationshipStatus.FRIEND);
         for (Relationship r : friends) {
             if (r.relationshipIdentity.user_high.compareTo(username) == 0) {

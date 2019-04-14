@@ -4,7 +4,6 @@ import com.brajkowski.leaderboard.dao.RelationshipDao;
 import com.brajkowski.leaderboard.dao.DaoCreationResult;
 import com.brajkowski.leaderboard.domain.Relationship;
 import com.brajkowski.leaderboard.domain.RelationshipIdentity;
-import com.brajkowski.leaderboard.domain.RelationshipStatus;
 import com.brajkowski.leaderboard.service.FriendService;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -51,8 +50,6 @@ public class RelationshipApi {
 
     @GetMapping(path = "/friendlist")
     public ResponseEntity<Object> getFriends(@RequestParam(value = "username") String username) {
-        return ResponseEntity.ok(relationships.getRelationshipsByUsernameAndStatus(username, RelationshipStatus.FRIEND));
-        // return ResponseEntity.ok(friendService.generateFriendList(username));
-        
+        return ResponseEntity.ok(friendService.generateFriendList(username));
     }
 }
