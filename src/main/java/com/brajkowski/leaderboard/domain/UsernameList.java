@@ -2,11 +2,11 @@ package com.brajkowski.leaderboard.domain;
 
 import java.util.ArrayList;
 
-public class FriendList {
+public class UsernameList {
     public int count;
     public ArrayList<String> usernames;
 
-    public FriendList() {
+    public UsernameList() {
         this.count = 0;
         this.usernames = new ArrayList<String>();
     }

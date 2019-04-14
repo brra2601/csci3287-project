@@ -10,12 +10,21 @@ public class RelationshipIdentity implements Serializable {
     public String user_low;
     public String user_high;
 
-    public static RelationshipIdentity normalize(RelationshipIdentity relationshipIdentity) {
-        if (relationshipIdentity.user_high.compareTo(relationshipIdentity.user_low) < 0) {
-            String temp = relationshipIdentity.user_high;
-            relationshipIdentity.user_high = relationshipIdentity.user_low;
-            relationshipIdentity.user_low = temp;
+    public RelationshipIdentity() {
+
+    }
+
+    public RelationshipIdentity(String user1, String user2) {
+        this.user_low = user1;
+        this.user_high = user2;
+        normalize();
+    }
+
+    private void normalize() {
+        if (user_high.compareTo(user_low) < 0) {
+            String temp = user_high;
+            user_high = user_low;
+            user_low = temp;
         }
-        return relationshipIdentity;
     }
 }
