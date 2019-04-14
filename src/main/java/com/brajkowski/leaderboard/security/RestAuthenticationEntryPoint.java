@@ -1,4 +1,4 @@
-package com.brajkowski.leaderboard.config;
+package com.brajkowski.leaderboard.security;
 
 import java.io.IOException;
 

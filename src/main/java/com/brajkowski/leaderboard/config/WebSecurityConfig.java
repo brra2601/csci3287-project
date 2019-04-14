@@ -1,6 +1,6 @@
 package com.brajkowski.leaderboard.config;
 
-import com.brajkowski.leaderboard.config.RestAuthenticationEntryPoint;
+import com.brajkowski.leaderboard.security.RestAuthenticationEntryPoint;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
