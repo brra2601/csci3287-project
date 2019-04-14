@@ -1,7 +1,7 @@
 package com.brajkowski.leaderboard.rest;
 
 import com.brajkowski.leaderboard.dao.UserDao;
-import com.brajkowski.leaderboard.dao.DaoCreationResult;
+import com.brajkowski.leaderboard.dao.DaoResult;
 import com.brajkowski.leaderboard.domain.User;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,7 +25,7 @@ public class UserApi {
 
     @PostMapping(path = "/signup")
     public ResponseEntity<Object> createNewUser(@RequestBody User user) {
-        DaoCreationResult result = users.addUser(user);
+        DaoResult result = users.addUser(user);
         if (result.didSucceed()) {
             return ResponseEntity.ok(user);
         }

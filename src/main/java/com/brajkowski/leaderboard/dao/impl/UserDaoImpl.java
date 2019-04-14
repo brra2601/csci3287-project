@@ -4,7 +4,7 @@ import java.util.List;
 import java.util.Optional;
 
 import com.brajkowski.leaderboard.dao.UserDao;
-import com.brajkowski.leaderboard.dao.DaoCreationResult;
+import com.brajkowski.leaderboard.dao.DaoResult;
 import com.brajkowski.leaderboard.domain.User;
 import com.brajkowski.leaderboard.repository.UserRepository;
 
@@ -37,19 +37,19 @@ public class UserDaoImpl implements UserDao {
     }
 
     @Override
-    public DaoCreationResult addUser(User user) {
+    public DaoResult addUser(User user) {
         if (userRepository.existsById(user.username)) {
             String message = String.format("A user already exists with the username %s", user.username);
-            return new DaoCreationResult(false, Optional.of(message));
+            return new DaoResult(false, Optional.of(message));
         }
         if (userRepository.existsByEmail(user.email)) {
             String message = String.format("A user already exists with the email %s", user.email);
-            return new DaoCreationResult(false, Optional.of(message));
+            return new DaoResult(false, Optional.of(message));
         }
         String encodedPassword = passwordEncoder.encode(user.password);
         user.password = encodedPassword;
         userRepository.save(user);
-        return new DaoCreationResult(true, null);
+        return new DaoResult(true, null);
     }
 
 }

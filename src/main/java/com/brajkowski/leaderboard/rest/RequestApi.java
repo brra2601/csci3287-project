@@ -1,6 +1,6 @@
 package com.brajkowski.leaderboard.rest;
 
-import com.brajkowski.leaderboard.dao.DaoCreationResult;
+import com.brajkowski.leaderboard.dao.DaoResult;
 import com.brajkowski.leaderboard.service.RequestService;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -27,7 +27,7 @@ public class RequestApi {
     @PostMapping
     public ResponseEntity<Object> createFriendRequest(@RequestParam(value = "username") String toUsername, Authentication authentication) {
         String fromUsername = authentication.getName();
-        DaoCreationResult result = requests.createFriendRequest(fromUsername, toUsername);
+        DaoResult result = requests.createFriendRequest(fromUsername, toUsername);
         if (result.didSucceed()) {
             return ResponseEntity.ok().body(result);
         }

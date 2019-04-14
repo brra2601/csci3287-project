@@ -2,7 +2,7 @@ package com.brajkowski.leaderboard.service;
 
 import java.util.List;
 
-import com.brajkowski.leaderboard.dao.DaoCreationResult;
+import com.brajkowski.leaderboard.dao.DaoResult;
 import com.brajkowski.leaderboard.dao.RelationshipDao;
 import com.brajkowski.leaderboard.domain.Relationship;
 import com.brajkowski.leaderboard.domain.RelationshipStatus;
@@ -26,9 +26,9 @@ public class RequestService {
         return friendRequestList;
     }
     
-    public DaoCreationResult createFriendRequest(String fromUsername, String toUsername) {
+    public DaoResult createFriendRequest(String fromUsername, String toUsername) {
         Relationship relationship = new Relationship(fromUsername, toUsername);
-        DaoCreationResult result = relationships.addRelationship(relationship);
+        DaoResult result = relationships.addRelationship(relationship);
         return result;
     }
 }
