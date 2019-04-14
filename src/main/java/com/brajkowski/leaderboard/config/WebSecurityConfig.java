@@ -27,14 +27,12 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     protected void configure(HttpSecurity http) throws Exception {
         http
             .csrf().disable()
-            .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS).and()
-            .authorizeRequests()
-            .antMatchers("/user/signup").permitAll()
-            .anyRequest()
-            .fullyAuthenticated()
+            .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS)
             .and()
-            .httpBasic()
-            .authenticationEntryPoint(authenticationEntryPoint);
+            .authorizeRequests().antMatchers("/user/signup").permitAll()
+            .anyRequest().fullyAuthenticated()
+            .and()
+            .httpBasic().authenticationEntryPoint(authenticationEntryPoint);
     }
 
     @Override
