@@ -4,7 +4,7 @@ import java.util.List;
 import java.util.Optional;
 
 import com.brajkowski.leaderboard.dao.UserDao;
-import com.brajkowski.leaderboard.domain.DaoCreationResult;
+import com.brajkowski.leaderboard.dao.DaoCreationResult;
 import com.brajkowski.leaderboard.domain.User;
 import com.brajkowski.leaderboard.repository.UserRepository;
 

@@ -1,7 +1,7 @@
 package com.brajkowski.leaderboard.rest;
 
 import com.brajkowski.leaderboard.dao.UserDao;
-import com.brajkowski.leaderboard.domain.DaoCreationResult;
+import com.brajkowski.leaderboard.dao.DaoCreationResult;
 import com.brajkowski.leaderboard.domain.User;
 
 import org.springframework.beans.factory.annotation.Autowired;

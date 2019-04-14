@@ -1,4 +1,4 @@
-package com.brajkowski.leaderboard.domain;
+package com.brajkowski.leaderboard.dao;
 
 import java.util.Optional;
 

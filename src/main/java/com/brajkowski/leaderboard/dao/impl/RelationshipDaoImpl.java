@@ -4,7 +4,7 @@ import java.util.List;
 import java.util.Optional;
 
 import com.brajkowski.leaderboard.dao.RelationshipDao;
-import com.brajkowski.leaderboard.domain.DaoCreationResult;
+import com.brajkowski.leaderboard.dao.DaoCreationResult;
 import com.brajkowski.leaderboard.domain.Relationship;
 import com.brajkowski.leaderboard.domain.RelationshipIdentity;
 import com.brajkowski.leaderboard.domain.RelationshipStatus;

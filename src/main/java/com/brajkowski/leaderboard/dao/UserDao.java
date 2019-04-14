@@ -3,7 +3,7 @@ package com.brajkowski.leaderboard.dao;
 import java.util.List;
 import java.util.Optional;
 
-import com.brajkowski.leaderboard.domain.DaoCreationResult;
+import com.brajkowski.leaderboard.dao.DaoCreationResult;
 import com.brajkowski.leaderboard.domain.User;
 
 import org.springframework.stereotype.Repository;
