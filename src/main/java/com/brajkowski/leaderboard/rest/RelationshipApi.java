@@ -4,7 +4,6 @@ import com.brajkowski.leaderboard.dao.RelationshipDao;
 import com.brajkowski.leaderboard.dao.DaoCreationResult;
 import com.brajkowski.leaderboard.domain.Relationship;
 import com.brajkowski.leaderboard.domain.RelationshipIdentity;
-import com.brajkowski.leaderboard.service.FriendService;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -13,7 +12,6 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
@@ -21,9 +19,6 @@ import org.springframework.web.bind.annotation.RestController;
 public class RelationshipApi {
     @Autowired
     private RelationshipDao relationships;
-
-    @Autowired
-    private FriendService friendService;
 
     @GetMapping
     public ResponseEntity<Iterable<Relationship>> getAll() {
@@ -46,10 +41,5 @@ public class RelationshipApi {
             return ResponseEntity.ok(relationship);
         }
         return ResponseEntity.badRequest().body(result.getMessage());
-    }
-
-    @GetMapping(path = "/friendlist")
-    public ResponseEntity<Object> getFriends(@RequestParam(value = "username") String username) {
-        return ResponseEntity.ok(friendService.generateFriendList(username));
     }
 }
