@@ -5,7 +5,7 @@ import java.sql.Timestamp;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 
-@Entity
+@Entity(name = "scores")
 public class Score {
     @Id
     public int id;
