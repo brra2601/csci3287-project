@@ -9,4 +9,5 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface ScoreDao {
     public List<Score> getAllScores();
+    public DaoResult addScore(Score score);
 }
