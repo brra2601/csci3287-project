@@ -1,10 +1,12 @@
 package com.brajkowski.leaderboard.dao.impl;
 
 import java.util.List;
+import java.util.Optional;
 
 import com.brajkowski.leaderboard.dao.DaoResult;
 import com.brajkowski.leaderboard.dao.ScoreDao;
 import com.brajkowski.leaderboard.domain.Score;
+import com.brajkowski.leaderboard.repository.LevelRepository;
 import com.brajkowski.leaderboard.repository.ScoreRepository;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,6 +17,9 @@ public class ScoreDaoImpl implements ScoreDao {
 
     @Autowired
     private ScoreRepository scoreRepository;
+
+    @Autowired
+    private LevelRepository LevelRepository;
     
     @Override
     public List<Score> getAllScores() {
@@ -23,8 +28,12 @@ public class ScoreDaoImpl implements ScoreDao {
 
     @Override
     public DaoResult addScore(Score score) {
-        scoreRepository.save(score);
-        return new DaoResult(true, null);
+        if (LevelRepository.existsById(score.level_id)) {
+            scoreRepository.save(score);
+            return new DaoResult(true, Optional.of("Successfully added score"));
+        }
+        return new DaoResult(false, Optional.of("Level does not exist"));
+        
     }
 
 }
