@@ -10,4 +10,6 @@ import org.springframework.stereotype.Repository;
 public interface ScoreDao {
     public List<Score> getAllScores();
     public DaoResult addScore(Score score);
+    public List<Score> getHighScoresByLevel(int levelId);
+    public List<Score> getHighScoresByLevelLimit(int levelId, int limit);
 }

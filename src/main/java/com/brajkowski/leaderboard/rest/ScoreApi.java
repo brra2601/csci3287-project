@@ -28,6 +28,11 @@ public class ScoreApi {
         return scores.getAllScores();
     }
 
+    @GetMapping(value = "/filter")
+    public List<Score> getFilteredScores(@RequestParam(value = "level") int levelId) {
+        return scores.getHighScoresByLevel(levelId);
+    }
+
     @PostMapping
     public ResponseEntity<Object> createScore(@RequestParam(value = "level") int level, @RequestParam(value = "score") int scoreValue, Authentication authentication) {
         Score score = new Score();
