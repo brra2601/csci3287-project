@@ -23,4 +23,10 @@ public interface ScoreRepository extends CrudRepository<Score, Integer> {
 
     @Query(value = "SELECT * FROM scores WHERE level_id = :level AND username IN (:userlist) ORDER BY value DESC LIMIT :limit", nativeQuery = true)
     List<Score> findHighScoresByLevelUserlist(@Param("level") int levelId, @Param("userlist") List<String> userList, @Param("limit") int limit);
+
+    @Query(value = "SELECT * FROM scores WHERE level_id = :level AND timestamp >= :datetime ORDER BY value DESC", nativeQuery = true)
+    List<Score> findHighScoresByLevelAfterDatetime(@Param("level") int levelId, @Param("datetime") String datetime);
+
+    @Query(value = "SELECT * FROM scores WHERE level_id = :level AND timestamp >= :datetime ORDER BY value DESC LIMIT :limit", nativeQuery = true)
+    List<Score> findHighScoresByLevelAfterDatetime(@Param("level") int levelId, @Param("datetime") String datetime, @Param("limit") int limit);
 }

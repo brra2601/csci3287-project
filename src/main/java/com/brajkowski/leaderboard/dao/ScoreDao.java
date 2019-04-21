@@ -14,4 +14,6 @@ public interface ScoreDao {
     public List<Score> getHighScoresByLevel(int levelId, int limit);
     public List<Score> getHighScoresByLevelUserlist(int levelId, List<String> userList);
     public List<Score> getHighScoresByLevelUserlist(int levelId, List<String> userList, int limit);
+    public List<Score> getHighScoresByLevelAfterDatetime(int levelId, String datetime);
+    public List<Score> getHighScoresByLevelAfterDatetime(int levelId, String datetime, int limit);
 }

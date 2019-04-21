@@ -5,7 +5,6 @@ import java.util.List;
 import com.brajkowski.leaderboard.dao.ScoreDao;
 import com.brajkowski.leaderboard.domain.Score;
 import com.brajkowski.leaderboard.domain.UsernameList;
-import com.mysql.cj.util.StringUtils;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
