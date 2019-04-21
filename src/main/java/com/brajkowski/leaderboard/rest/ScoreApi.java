@@ -7,6 +7,7 @@ import java.util.List;
 import com.brajkowski.leaderboard.dao.DaoResult;
 import com.brajkowski.leaderboard.dao.ScoreDao;
 import com.brajkowski.leaderboard.domain.Score;
+import com.brajkowski.leaderboard.service.ScoreService;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -23,14 +24,23 @@ public class ScoreApi {
     @Autowired
     private ScoreDao scores;
 
+    @Autowired
+    private ScoreService scoreService;
+
     @GetMapping
     public List<Score> getAllScores() {
         return scores.getAllScores();
     }
 
     @GetMapping(value = "/filter")
-    public List<Score> getFilteredScores(@RequestParam(value = "level") int levelId) {
-        return scores.getHighScoresByLevel(levelId);
+    public List<Score> getFilteredScores(   @RequestParam(value = "level", required = true) Integer levelId,
+                                            @RequestParam(value = "user", required = false) String userFilter,
+                                            @RequestParam(value = "view", required = false) String viewFilter,
+                                            @RequestParam(value = "limit", required = false) Integer limit,
+                                            Authentication authentication
+                                        ) {
+        String username = authentication.getName();
+        return scoreService.getFilteredHighScores(levelId, userFilter, viewFilter, username);
     }
 
     @PostMapping

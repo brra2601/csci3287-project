@@ -12,9 +12,15 @@ public interface ScoreRepository extends CrudRepository<Score, Integer> {
     @Override
     List<Score> findAll();
 
-    @Query(value = "SELECT * FROM scores WHERE level_id = :level ORDER BY value", nativeQuery = true)
+    @Query(value = "SELECT * FROM scores WHERE level_id = :level ORDER BY value DESC", nativeQuery = true)
     List<Score> findHighScoresByLevel(@Param("level") int levelId);
 
     @Query(value = "SELECT * FROM scores WHERE level_id = :level ORDER BY value DESC LIMIT :limit", nativeQuery = true)
-    List<Score> findHighScoresByLevelLimit(@Param("level") int levelId, @Param("limit") int limit);
+    List<Score> findHighScoresByLevel(@Param("level") int levelId, @Param("limit") int limit);
+
+    @Query(value = "SELECT * FROM scores WHERE level_id = :level AND username IN (:userlist) ORDER BY value DESC", nativeQuery = true)
+    List<Score> findHighScoresByLevelUserlist(@Param("level") int levelId, @Param("userlist") List<String> userList);
+
+    @Query(value = "SELECT * FROM scores WHERE level_id = :level AND username IN (:userlist) ORDER BY value DESC LIMIT :limit", nativeQuery = true)
+    List<Score> findHighScoresByLevelUserlist(@Param("level") int levelId, @Param("userlist") List<String> userList, @Param("limit") int limit);
 }

@@ -42,8 +42,18 @@ public class ScoreDaoImpl implements ScoreDao {
     }
 
     @Override
-    public List<Score> getHighScoresByLevelLimit(int levelId, int limit) {
-        return scoreRepository.findHighScoresByLevelLimit(levelId, limit);
+    public List<Score> getHighScoresByLevel(int levelId, int limit) {
+        return scoreRepository.findHighScoresByLevel(levelId, limit);
+    }
+
+    @Override
+    public List<Score> getHighScoresByLevelUserlist(int levelId, List<String> userList) {
+        return scoreRepository.findHighScoresByLevelUserlist(levelId, userList);
+    }
+
+    @Override
+    public List<Score> getHighScoresByLevelUserlist(int levelId, List<String> userList, int limit) {
+        return scoreRepository.findHighScoresByLevelUserlist(levelId, userList, limit);
     }
 
 }
