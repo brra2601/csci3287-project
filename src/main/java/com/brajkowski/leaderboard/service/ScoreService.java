@@ -2,17 +2,11 @@ package com.brajkowski.leaderboard.service;
 
 import java.sql.Timestamp;
 import java.time.Instant;
-import java.time.ZoneId;
 import java.time.ZonedDateTime;
-import java.time.temporal.TemporalAmount;
-import java.util.ArrayList;
-import java.util.Calendar;
-import java.util.GregorianCalendar;
 import java.util.List;
 
 import com.brajkowski.leaderboard.dao.ScoreDao;
 import com.brajkowski.leaderboard.domain.Score;
-import com.brajkowski.leaderboard.domain.UsernameList;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -27,7 +21,9 @@ public class ScoreService {
 
     public List<Score> getFilteredHighScores(int levelId, String userFilter, String viewFilter, String username) {
         if (userFilter != null && viewFilter != null) {
-            return null; // TODO: return scores based on view and user filters
+            String datetime = generateViewFilter(viewFilter);
+            List<String> userList = generateUserFilter(userFilter, username);
+            return scores.getHighScoresByLevelAfterDatetimeAndUserlist(levelId, datetime, userList);
         }
         if (userFilter != null) {
             return scores.getHighScoresByLevelUserlist(levelId, generateUserFilter(userFilter, username));
@@ -64,7 +60,7 @@ public class ScoreService {
                 usernames = friendService.generateFriendList(username).usernames;
                 break;
             default:
-                return new ArrayList<String>();
+                usernames = List.of(username);
         }
         return usernames;
     }

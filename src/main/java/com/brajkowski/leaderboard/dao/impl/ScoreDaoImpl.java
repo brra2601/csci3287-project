@@ -65,4 +65,10 @@ public class ScoreDaoImpl implements ScoreDao {
     public List<Score> getHighScoresByLevelAfterDatetime(int levelId, String datetime, int limit) {
         return scoreRepository.findHighScoresByLevelAfterDatetime(levelId, datetime, limit);
     }
+
+    @Override
+    public List<Score> getHighScoresByLevelAfterDatetimeAndUserlist(int levelId, String datetime,
+            List<String> userList) {
+        return scoreRepository.findHighScoresByLevelAfterDatetimeAndUserlist(levelId, datetime, userList);
+    }
 }
