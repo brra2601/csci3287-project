@@ -51,7 +51,7 @@ public class RelationshipDaoImpl implements RelationshipDao {
             return new DaoResult(false, Optional.of(message));
         }
         relationshipRepository.save(relationship);
-        return new DaoResult(true, null);
+        return new DaoResult(true, Optional.of("Relationship created"));
     }
 
     @Override

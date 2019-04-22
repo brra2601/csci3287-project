@@ -49,7 +49,7 @@ public class UserDaoImpl implements UserDao {
         String encodedPassword = passwordEncoder.encode(user.password);
         user.password = encodedPassword;
         userRepository.save(user);
-        return new DaoResult(true, null);
+        return new DaoResult(true, Optional.of("User added"));
     }
 
 }
