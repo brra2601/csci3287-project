@@ -183,3 +183,8 @@ https://github.com/brra2601/csci3287-project
 https://leaderboard-project.herokuapp.com/
 
 Interact with the API using the API documentation above.  The first step would be to sign up for an account using the `/user/signup` API.
+
+## Demo Video
+https://github.com/brra2601/csci3287-project/blob/master/demo.mp4
+
+Click the download button to download the video from GitHub.
