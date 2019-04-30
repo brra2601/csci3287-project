@@ -3,6 +3,7 @@ package com.brajkowski.leaderboard.service;
 import java.sql.Timestamp;
 import java.time.Instant;
 import java.time.ZonedDateTime;
+import java.util.ArrayList;
 import java.util.List;
 
 import com.brajkowski.leaderboard.dao.ScoreDao;
@@ -51,16 +52,16 @@ public class ScoreService {
     }
 
     private List<String> generateUserFilter(String userFilter, String username) {
-        List<String> usernames;
+        List<String> usernames = new ArrayList<String>();
         switch (userFilter.toLowerCase()) {
             case "me":
-                usernames = List.of(username);
+                usernames.add(username);
                 break;
             case "friends":
                 usernames = friendService.generateFriendList(username).usernames;
                 break;
             default:
-                usernames = List.of(username);
+                usernames.add(username);
         }
         return usernames;
     }
